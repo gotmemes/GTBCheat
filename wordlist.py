@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import csv
+import json
 import os
 import sys
 import argparse
@@ -8,8 +9,10 @@ import datetime
 from typing import List, Set
 
 class WordlistManager:
-    def __init__(self, filepath: str = "src/main/resources/wordlist.csv"):
+    def __init__(self, filepath: str = "src/main/resources/wordlist.csv",
+                 jsonpath: str = "wordlist.json"):
         self.filepath = filepath
+        self.jsonpath = jsonpath
         self.words: Set[str] = set()
         self.load_words()
 
@@ -85,12 +88,31 @@ class WordlistManager:
             print(word)
         print(f"\nTotal words: {len(self.words)}")
 
+    def create_json(self) -> None:
+        """Create a wordlist.json file for network sending."""
+        try:
+            # Convert the set of words to a sorted list
+            sorted_words = sorted(self.words)
+            # Create a dictionary to hold the wordlist
+            wordlist_dict = {"words": sorted_words}
+
+            # Write the dictionary to a JSON file
+            with open(self.jsonpath, 'w') as json_file:
+                json.dump(wordlist_dict, json_file, indent=4)  # Pretty print with an indent of 4 spaces
+
+            print(f"Successfully created {self.jsonpath} with {len(sorted_words)} words.")
+        except Exception as e:
+            print(f"Error creating JSON file: {e}")
+            sys.exit(1)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Manage Guess The Build wordlist")
     group = parser.add_mutually_exclusive_group()
     group.add_argument('-a', '--add', nargs='+', help='Add one or more words to the wordlist')
     group.add_argument('-r', '--remove', nargs='+', help='Remove one or more words from the wordlist')
     group.add_argument('-l', '--list', action='store_true', help='List all words in the wordlist')
+    group.add_argument('-j', '--json', action='store_true', help='Create a wordlist.json file')
 
     args = parser.parse_args()
 
@@ -105,6 +127,8 @@ def main():
         manager.save_words()
     elif args.list:
         manager.list_words()
+    elif args.json:
+        manager.create_json()
     else:
         parser.print_help()
 
