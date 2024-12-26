@@ -24,8 +24,8 @@ public class ExampleMod {
     public static ExampleMod INSTANCE; // Adds the instance of the mod, so we can access other variables.
     public static TestConfig config;
 
-    public static final String THEME_MSG = EnumChatFormatting.AQUA + "The theme is " + EnumChatFormatting.YELLOW;
-    public static final String FILE_PATH = "/wordlist.csv";
+    // public static final String THEME_MSG = EnumChatFormatting.AQUA + "The theme is " + EnumChatFormatting.YELLOW;
+    // public static final String FILE_PATH = "/wordlist.csv";
 
     // Register the config and commands.
     @Mod.EventHandler
