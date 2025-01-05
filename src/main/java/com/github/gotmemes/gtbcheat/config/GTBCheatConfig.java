@@ -1,7 +1,7 @@
 package com.github.gotmemes.gtbcheat.config;
 
-import com.github.gotmemes.gtbcheat.ExampleMod;
-import com.github.gotmemes.gtbcheat.hud.TestHud;
+import com.github.gotmemes.gtbcheat.GTBCheat;
+import com.github.gotmemes.gtbcheat.hud.GTBCheatHud;
 import cc.polyfrost.oneconfig.config.Config;
 import cc.polyfrost.oneconfig.config.annotations.Dropdown;
 import cc.polyfrost.oneconfig.config.annotations.HUD;
@@ -15,11 +15,11 @@ import cc.polyfrost.oneconfig.config.data.OptionSize;
  * The main Config entrypoint that extends the Config type and inits the config options.
  * See <a href="https://docs.polyfrost.cc/oneconfig/config/adding-options">this link</a> for more config Options
  */
-public class TestConfig extends Config {
+public class GTBCheatConfig extends Config {
     @HUD(
-            name = "Example HUD"
+            name = "GTB Cheat HUD"
     )
-    public TestHud hud = new TestHud();
+    public GTBCheatHud hud = new GTBCheatHud();
 
     @Switch(
             name = "Example Switch",
@@ -40,8 +40,8 @@ public class TestConfig extends Config {
     )
     public static int exampleDropdown = 1; // Default option (in this case "Option 2")
 
-    public TestConfig() {
-        super(new Mod(ExampleMod.NAME, ModType.UTIL_QOL), ExampleMod.MODID + ".json");
+    public GTBCheatConfig() {
+        super(new Mod(GTBCheat.NAME, ModType.UTIL_QOL), GTBCheat.MODID + ".json");
         initialize();
     }
 }

@@ -1,7 +1,7 @@
 package com.github.gotmemes.gtbcheat.hud;
 
 import cc.polyfrost.oneconfig.hud.TextHud;
-import com.github.gotmemes.gtbcheat.config.TestConfig;
+import com.github.gotmemes.gtbcheat.config.GTBCheatConfig;
 import java.util.List;
 
 /**
@@ -9,8 +9,8 @@ import java.util.List;
  *
  * @see TestConfig#hud
  */
-public class TestHud extends TextHud {
-    public TestHud() {
+public class GTBCheatHud extends TextHud {
+    public GTBCheatHud() {
         super(true, 0, 0);
     }
 
