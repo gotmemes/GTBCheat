@@ -5,10 +5,10 @@
     "description": "",
     "version": "${version}",
     "mcversion": "${mcVersionStr}",
-    "url": "https://github.com/gotmemes/gtbcheat",
+    "url": "",
     "updateUrl": "",
     "authorList": [
-      "GotMemes"
+      "Your Name"
     ],
     "credits": "",
     "logoFile": "",
