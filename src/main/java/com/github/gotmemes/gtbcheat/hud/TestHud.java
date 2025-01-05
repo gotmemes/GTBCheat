@@ -1,7 +1,7 @@
-package org.polyfrost.example.hud;
+package com.github.gotmemes.gtbcheat.hud;
 
 import cc.polyfrost.oneconfig.hud.TextHud;
-import org.polyfrost.example.config.TestConfig;
+import com.github.gotmemes.gtbcheat.config.TestConfig;
 import java.util.List;
 
 /**

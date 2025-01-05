@@ -1,7 +1,7 @@
-package org.polyfrost.example.config;
+package com.github.gotmemes.gtbcheat.config;
 
-import org.polyfrost.example.ExampleMod;
-import org.polyfrost.example.hud.TestHud;
+import com.github.gotmemes.gtbcheat.ExampleMod;
+import com.github.gotmemes.gtbcheat.hud.TestHud;
 import cc.polyfrost.oneconfig.config.Config;
 import cc.polyfrost.oneconfig.config.annotations.Dropdown;
 import cc.polyfrost.oneconfig.config.annotations.HUD;

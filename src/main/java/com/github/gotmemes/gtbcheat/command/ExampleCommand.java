@@ -1,6 +1,6 @@
-package org.polyfrost.example.command;
+package com.github.gotmemes.gtbcheat.command;
 
-import org.polyfrost.example.ExampleMod;
+import com.github.gotmemes.gtbcheat.ExampleMod;
 import cc.polyfrost.oneconfig.utils.commands.annotations.Command;
 import cc.polyfrost.oneconfig.utils.commands.annotations.Main;
 

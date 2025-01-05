@@ -1,7 +1,7 @@
-package org.polyfrost.example;
+package com.github.gotmemes.gtbcheat;
 
-import org.polyfrost.example.command.ExampleCommand;
-import org.polyfrost.example.config.TestConfig;
+import com.github.gotmemes.gtbcheat.command.ExampleCommand;
+import com.github.gotmemes.gtbcheat.config.TestConfig;
 import cc.polyfrost.oneconfig.events.event.InitializationEvent;
 import net.minecraftforge.fml.common.Mod;
 import cc.polyfrost.oneconfig.utils.commands.CommandManager;
