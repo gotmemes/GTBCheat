@@ -12,7 +12,7 @@ import cc.polyfrost.oneconfig.utils.commands.annotations.Main;
  * @see Main
  * @see GTBCheat
  */
-@Command(value = GTBCheat.MODID, description = "Access the " + GTBCheat.NAME + " GUI.")
+@Command(value = GTBCheat.MODID, description = "Access the " + GTBCheat.NAME + " config GUI.")
 public class GTBCheatCommand {
     @Main
     private void handle() {
