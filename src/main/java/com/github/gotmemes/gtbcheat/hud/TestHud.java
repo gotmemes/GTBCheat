@@ -1,7 +1,7 @@
-package org.polyfrost.example.hud;
+package com.github.gotmemes.gtbcheat.hud;
 
 import cc.polyfrost.oneconfig.hud.SingleTextHud;
-import org.polyfrost.example.config.TestConfig;
+import com.github.gotmemes.gtbcheat.config.TestConfig;
 
 /**
  * An example OneConfig HUD that is started in the config and displays text.
