@@ -13,7 +13,13 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
  * @see Mod
  * @see InitializationEvent
  */
-@Mod(modid = GTBCheat.MODID, name = GTBCheat.NAME, version = GTBCheat.VERSION)
+@Mod(
+    modid = GTBCheat.MODID, 
+    name = GTBCheat.NAME, 
+    version = GTBCheat.VERSION, 
+    clientSideOnly = true,
+    acceptedMinecraftVersions = "[1.8.9]"
+)
 public class GTBCheat {
 
     // Sets the variables from `gradle.properties`. See the `blossom` config in `build.gradle.kts`.
