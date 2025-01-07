@@ -1,14 +1,12 @@
 package com.github.gotmemes.gtbcheat.hud;
 
 import cc.polyfrost.oneconfig.hud.TextHud;
-import cc.polyfrost.oneconfig.libs.universal.UMinecraft;
 import cc.polyfrost.oneconfig.utils.hypixel.LocrawInfo;
 import cc.polyfrost.oneconfig.utils.hypixel.LocrawUtil;
 import cc.polyfrost.oneconfig.events.event.LocrawEvent;
 import cc.polyfrost.oneconfig.events.EventManager;
 import cc.polyfrost.oneconfig.libs.eventbus.Subscribe;
 import com.github.gotmemes.gtbcheat.config.GTBCheatConfig;
-import com.github.gotmemes.gtbcheat.mixin.minecraft.GuiIngameAccessor;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -100,8 +98,6 @@ public class GTBCheatHud extends TextHud {
             if (actionBar.startsWith(THEME_HINT_PREFIX)) {
                 GTBCheatHud.this.hint = actionBar.substring(THEME_HINT_PREFIX.length());
                 GTBCheatHud.this.matchingWords = GTBCheatHud.this.findWords(GTBCheatHud.this.hint);
-                System.out.println("MATCHING WORDS: " + GTBCheatHud.this.matchingWords);
-                System.out.println("HINT: " + GTBCheatHud.this.hint);
             }
         }
     }
@@ -139,16 +135,18 @@ public class GTBCheatHud extends TextHud {
 
     @Override
     protected void getLines(List<String> lines, boolean example) {
-        lines.add(matchingWords.toString());
-        lines.add(Arrays.toString(cachedWordList));
         if (isInGTB) {
-            lines.add("GTB Cheat: ");
-            lines.add(hint);
+            lines.add("GTB Cheat: " + hint);
 
             StringBuilder line = new StringBuilder();
             for (String word : matchingWords) {
-                line.append(word).append(", ");
-                if (line.length() > 25) {
+                if (line.length() == 0) {
+                    line.append(word);
+                } else {
+                    line.append(", ").append(word);
+                }
+
+                if (line.length() > GTBCheatConfig.minWidth) {
                     lines.add(line.toString());
                     line = new StringBuilder();
                 }

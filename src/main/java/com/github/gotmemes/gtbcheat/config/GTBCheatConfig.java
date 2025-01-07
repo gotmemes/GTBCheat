@@ -21,24 +21,12 @@ public class GTBCheatConfig extends Config {
     )
     public GTBCheatHud hud = new GTBCheatHud();
 
-    @Switch(
-            name = "Example Switch",
-            size = OptionSize.SINGLE // Optional
+    @Number(
+            name = "Minimum Width for New Line",
+            min = 0, max = 100,
+            step = 1
     )
-    public static boolean exampleSwitch = false; // The default value for the boolean Switch.
-
-    @Slider(
-            name = "Example Slider",
-            min = 0f, max = 100f, // Minimum and maximum values for the slider.
-            step = 10 // The amount of steps that the slider should have.
-    )
-    public static float exampleSlider = 50f; // The default value for the float Slider.
-
-    @Dropdown(
-            name = "Example Dropdown", // Name of the Dropdown
-            options = {"Option 1", "Option 2", "Option 3", "Option 4"} // Options available.
-    )
-    public static int exampleDropdown = 1; // Default option (in this case "Option 2")
+    public static int minWidth = 40;
 
     public GTBCheatConfig() {
         super(new Mod(GTBCheat.NAME, ModType.UTIL_QOL), GTBCheat.MODID + ".json");
