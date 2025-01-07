@@ -7,8 +7,7 @@
       "maxShiftBy": 5
     },
     "client": [
-      "MinecraftMixin",
-      "minecraft.GuiIngameAccessor"
+      "MinecraftMixin"
     ],
     "verbose": true
   }
