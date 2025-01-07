@@ -94,7 +94,12 @@ class WordlistManager:
             # Convert the set of words to a sorted list
             sorted_words = sorted(self.words)
             # Create a dictionary to hold the wordlist
-            wordlist_dict = {"words": sorted_words}
+            today = datetime.date.today()
+            date_string = today.strftime("%Y-%m-%d")  # Format: YYYY-MM-DD
+            wordlist_dict = {
+                "date": date_string,
+                "words": sorted_words,
+            }
 
             # Write the dictionary to a JSON file
             with open(self.jsonpath, 'w') as json_file:
