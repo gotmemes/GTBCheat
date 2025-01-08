@@ -1,13 +1,15 @@
 package com.github.gotmemes.gtbcheat.config;
 
-import com.github.gotmemes.gtbcheat.GTBCheat;
-import com.github.gotmemes.gtbcheat.hud.GTBCheatHud;
-import cc.polyfrost.oneconfig.config.Config;
 import cc.polyfrost.oneconfig.config.annotations.Dropdown;
 import cc.polyfrost.oneconfig.config.annotations.HUD;
 import cc.polyfrost.oneconfig.config.annotations.Slider;
 import cc.polyfrost.oneconfig.config.annotations.Switch;
 import cc.polyfrost.oneconfig.config.annotations.Number;
+import cc.polyfrost.oneconfig.config.annotations.Color;
+import cc.polyfrost.oneconfig.config.core.OneColor;
+import com.github.gotmemes.gtbcheat.GTBCheat;
+import com.github.gotmemes.gtbcheat.hud.GTBCheatHud;
+import cc.polyfrost.oneconfig.config.Config;
 import cc.polyfrost.oneconfig.config.data.Mod;
 import cc.polyfrost.oneconfig.config.data.ModType;
 import cc.polyfrost.oneconfig.config.data.OptionSize;
@@ -21,6 +23,11 @@ public class GTBCheatConfig extends Config {
             name = "GTB Cheat HUD"
     )
     public GTBCheatHud hud = new GTBCheatHud();
+
+    @Color(
+            name = "Header Color"
+    )
+    public static OneColor headerColor = new OneColor("#b7c5ff");
 
     @Number(
             name = "Minimum Width for New Line",

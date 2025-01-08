@@ -1,6 +1,9 @@
 package com.github.gotmemes.gtbcheat.hud;
 
+import cc.polyfrost.oneconfig.config.core.OneColor;
 import cc.polyfrost.oneconfig.hud.TextHud;
+import cc.polyfrost.oneconfig.libs.universal.UMatrixStack;
+import cc.polyfrost.oneconfig.renderer.TextRenderer;
 import cc.polyfrost.oneconfig.utils.hypixel.LocrawInfo;
 import cc.polyfrost.oneconfig.utils.hypixel.LocrawUtil;
 import cc.polyfrost.oneconfig.events.event.LocrawEvent;
@@ -135,6 +138,11 @@ public class GTBCheatHud extends TextHud {
 
     @Override
     protected void getLines(List<String> lines, boolean example) {
+        if (example) {
+            lines.add("GTB Cheat: Example Hint");
+            lines.add("Example Word");
+            return;
+        }
         if (isInGTB) {
             lines.add("GTB Cheat: " + hint);
 
@@ -154,6 +162,25 @@ public class GTBCheatHud extends TextHud {
             if (line.length() > 0) {
                 lines.add(line.toString());
             }
+        }
+    }
+
+    @Override
+    public void draw(UMatrixStack matrices, float x, float y, float scale, boolean example) {
+        if (lines == null || lines.size() == 0) return;
+
+        float textY = y;
+        boolean header = true;
+        for (String line : lines) {
+            if (header) {
+                TextRenderer.drawScaledString(line, x, y, GTBCheatConfig.headerColor.getRGB(),
+                        TextRenderer.TextType.toType(textType), scale);
+                textY += 12 * scale;
+                header = false;
+                continue;
+            }
+            drawLine(line, x, textY, scale);
+            textY += 12 * scale;
         }
     }
 }
