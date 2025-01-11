@@ -7,6 +7,7 @@ import cc.polyfrost.oneconfig.renderer.TextRenderer;
 import cc.polyfrost.oneconfig.utils.hypixel.LocrawInfo;
 import cc.polyfrost.oneconfig.utils.hypixel.LocrawUtil;
 import cc.polyfrost.oneconfig.events.event.LocrawEvent;
+import cc.polyfrost.oneconfig.events.event.PreShutdownEvent;
 import cc.polyfrost.oneconfig.events.EventManager;
 import cc.polyfrost.oneconfig.libs.eventbus.Subscribe;
 import com.github.gotmemes.gtbcheat.config.GTBCheatConfig;
@@ -70,6 +71,8 @@ public class GTBCheatHud extends TextHud {
 
     private void unloadWordList() {
         cachedWordList = null;
+        matchingWords = new ArrayList<>();
+        hint = "";
     }
 
     @Subscribe
@@ -88,9 +91,17 @@ public class GTBCheatHud extends TextHud {
             unloadWordList();
             MinecraftForge.EVENT_BUS.unregister(actionBarSubscriber);
             actionBarSubscriber = null;
-            matchingWords = new ArrayList<>();
-            hint = "";
         }
+        // TODO: possibly add unload/unregister on serverId change
+    }
+
+    @Subscribe
+    public void onPreShutdown(PreShutdownEvent event) {
+        isRunning = false;
+        isInGTB = false;
+        actionBarSubscriber = null;
+        unloadWordList();
+        MinecraftForge.EVENT_BUS.unregister(actionBarSubscriber);
     }
 
     private class ActionBarSubscriber {
