@@ -68,7 +68,6 @@ public class GTBCheatHud extends TextHud {
             }
 
             cachedWordList = words.toArray(new String[0]);
-            System.out.println("WORDLIST: " + Arrays.toString(cachedWordList));
 
         } catch (Exception e) {
             System.err.println("Error reading file " + FILE_PATH + ": " + e.getMessage());
@@ -99,7 +98,7 @@ public class GTBCheatHud extends TextHud {
             MinecraftForge.EVENT_BUS.unregister(actionBarSubscriber);
             actionBarSubscriber = null;
         }
-        // TODO: possibly add unload/unregister on serverId change
+        // TODO: possibly clear hint and words on serverId change
     }
 
     @Subscribe
