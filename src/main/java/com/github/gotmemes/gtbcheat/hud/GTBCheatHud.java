@@ -136,7 +136,7 @@ public class GTBCheatHud extends TextHud {
             if (hintChar != '_' && hintChar != wordChar) {
                 return false;
             }
-            if (hintChar == '_' && wordChar == ' ') {
+            if (hintChar == '_' && (wordChar == ' ' || wordChar == '-')) {
                 return false;
             }
         }
