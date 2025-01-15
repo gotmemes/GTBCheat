@@ -5,7 +5,7 @@ import cc.polyfrost.oneconfig.utils.commands.annotations.Command;
 import cc.polyfrost.oneconfig.utils.commands.annotations.Main;
 
 /**
- * A command implementing the Command api of OneConfig.
+ * A command implementing the Command api of OneConfig and pulls up GTBCheat config.
  * Registered in GTBCheat.java with `CommandManager.INSTANCE.registerCommand(new GTBCheatCommand());`
  *
  * @see Command

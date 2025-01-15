@@ -1,7 +1,9 @@
 package com.github.gotmemes.gtbcheat.hud;
 
+import cc.polyfrost.oneconfig.config.annotations.Color;
+import cc.polyfrost.oneconfig.config.annotations.Dropdown;
+import cc.polyfrost.oneconfig.config.core.OneColor;
 import cc.polyfrost.oneconfig.hud.TextHud;
-import cc.polyfrost.oneconfig.libs.universal.UChat;
 import cc.polyfrost.oneconfig.libs.universal.UMatrixStack;
 import cc.polyfrost.oneconfig.renderer.TextRenderer;
 import cc.polyfrost.oneconfig.events.event.LocrawEvent;
@@ -20,7 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * An example OneConfig HUD that is started in the config and displays text.
+ * GTBCheat HUD that displays suggested answers.
  *
  * @see GTBCheatConfig#hud
  */
@@ -31,6 +33,15 @@ public class GTBCheatHud extends TextHud {
     private List<String> matchingWords = new ArrayList<>();
     private String hint = "";
     private ActionBarSubscriber actionBarSubscriber;
+
+    @Color(name = "Header Color")
+    public static OneColor headerColor = new OneColor(255, 183, 197, 1);
+
+    @Dropdown(
+            name = "Text Type",
+            options = {"No Shadow", "Shadow", "Full Shadow"}
+    )
+    protected int headerTextType = 0;
 
     public GTBCheatHud() {
         super(true, 0, 0);
@@ -104,10 +115,16 @@ public class GTBCheatHud extends TextHud {
         @SubscribeEvent
         public void onChatReceive(ClientChatReceivedEvent event) {
             final String THEME_HINT_PREFIX = "§bThe theme is §e";
+            final String THEME_END_PREFIX = "§r§eThe theme was:";
             String actionBar = event.message.getUnformattedTextForChat();
+            String chatMessage = event.message.getFormattedText();
             if (actionBar.startsWith(THEME_HINT_PREFIX)) {
                 GTBCheatHud.this.hint = actionBar.substring(THEME_HINT_PREFIX.length());
                 GTBCheatHud.this.matchingWords = GTBCheatHud.this.findWords(GTBCheatHud.this.hint);
+            }
+            if (chatMessage.startsWith(THEME_END_PREFIX)) {
+                GTBCheatHud.this.hint = "";
+                GTBCheatHud.this.matchingWords = new ArrayList<>();
             }
         }
     }
@@ -180,8 +197,8 @@ public class GTBCheatHud extends TextHud {
         boolean header = true;
         for (String line : lines) {
             if (header) {
-                TextRenderer.drawScaledString(line, x, y, GTBCheatConfig.headerColor.getRGB(),
-                        TextRenderer.TextType.toType(textType), scale);
+                TextRenderer.drawScaledString(line, x, y, headerColor.getRGB(),
+                        TextRenderer.TextType.toType(headerTextType), scale);
                 textY += 12 * scale;
                 header = false;
                 continue;

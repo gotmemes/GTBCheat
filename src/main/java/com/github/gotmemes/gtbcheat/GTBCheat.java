@@ -8,7 +8,7 @@ import cc.polyfrost.oneconfig.utils.commands.CommandManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
 /**
- * The entrypoint of the Example Mod that initializes it.
+ * The entrypoint of the GTBCheat that initializes it.
  *
  * @see Mod
  * @see InitializationEvent
