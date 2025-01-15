@@ -1,11 +1,9 @@
 package com.github.gotmemes.gtbcheat.hud;
 
-import cc.polyfrost.oneconfig.config.core.OneColor;
 import cc.polyfrost.oneconfig.hud.TextHud;
+import cc.polyfrost.oneconfig.libs.universal.UChat;
 import cc.polyfrost.oneconfig.libs.universal.UMatrixStack;
 import cc.polyfrost.oneconfig.renderer.TextRenderer;
-import cc.polyfrost.oneconfig.utils.hypixel.LocrawInfo;
-import cc.polyfrost.oneconfig.utils.hypixel.LocrawUtil;
 import cc.polyfrost.oneconfig.events.event.LocrawEvent;
 import cc.polyfrost.oneconfig.events.event.PreShutdownEvent;
 import cc.polyfrost.oneconfig.events.EventManager;
@@ -13,7 +11,6 @@ import cc.polyfrost.oneconfig.libs.eventbus.Subscribe;
 import com.github.gotmemes.gtbcheat.config.GTBCheatConfig;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.io.BufferedReader;
@@ -83,8 +80,7 @@ public class GTBCheatHud extends TextHud {
             // load word list and register listeners
             isRunning = true;
             loadWordList();
-            actionBarSubscriber = new ActionBarSubscriber();
-            MinecraftForge.EVENT_BUS.register(actionBarSubscriber);
+            MinecraftForge.EVENT_BUS.register(actionBarSubscriber = new ActionBarSubscriber());
         } else if (!isInGTB && isRunning) {
             // unload word list and unregister listeners
             isRunning = false;
@@ -105,7 +101,7 @@ public class GTBCheatHud extends TextHud {
     }
 
     private class ActionBarSubscriber {
-        @SubscribeEvent(priority = EventPriority.HIGH)
+        @SubscribeEvent
         public void onChatReceive(ClientChatReceivedEvent event) {
             final String THEME_HINT_PREFIX = "§bThe theme is §e";
             String actionBar = event.message.getUnformattedTextForChat();
@@ -134,8 +130,8 @@ public class GTBCheatHud extends TextHud {
 
     private boolean isWordMatch(String word, String hint) {
         for (int i = 0; i < word.length(); i++) {
-            char hintChar = hint.charAt(i);
-            char wordChar = word.charAt(i);
+            char hintChar = Character.toLowerCase(hint.charAt(i));
+            char wordChar = Character.toLowerCase(word.charAt(i));
 
             if (hintChar != '_' && hintChar != wordChar) {
                 return false;
